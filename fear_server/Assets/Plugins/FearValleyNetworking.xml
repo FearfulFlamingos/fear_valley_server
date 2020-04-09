@@ -1,0 +1,271 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FearValleyNetworking</name>
+    </assembly>
+    <members>
+        <member name="T:FearValleyNetwork.NetOP">
+            <summary>
+            Defines the network operation codes used by all network commands.
+            </summary>
+            <remarks>
+            The Operation codes are roughly in the order that a typical game will play out.
+            <para>Codes 1-10 are used to initialize the game pieces.</para>
+            <para>Codes 20-50 are reserved for player actions.</para>
+            <para>Codes 6X are reserved for manipulating controls and UI.</para>
+            <para>Codes 7X are reserved for scene transitions.</para>
+            </remarks>
+        </member>
+        <member name="T:FearValleyNetwork.NetOP.Operation">
+            <summary>
+            All possible network commands.
+            </summary>
+        </member>
+        <member name="F:FearValleyNetwork.NetOP.Operation.None">
+            <summary>Default command.</summary>
+        </member>
+        <member name="F:FearValleyNetwork.NetOP.Operation.AddTroop">
+            <summary>Client command to add a troop to server DB.</summary>
+        </member>
+        <member name="F:FearValleyNetwork.NetOP.Operation.FinishBuild">
+            <summary>Client command to finish building an army.</summary>
+        </member>
+        <member name="F:FearValleyNetwork.NetOP.Operation.MOVE">
+            <summary>Client command to move a troop.</summary>
+        </member>
+        <member name="F:FearValleyNetwork.NetOP.Operation.ATTACK">
+            <summary>Client command to attack another troop.</summary>
+        </member>
+        <member name="F:FearValleyNetwork.NetOP.Operation.RETREAT">
+            <summary>Client command to retreat a toop.</summary>
+        </member>
+        <member name="F:FearValleyNetwork.NetOP.Operation.EndTurn">
+            <summary>Client command to end a turn.</summary>
+        </member>
+        <member name="F:FearValleyNetwork.NetOP.Operation.ChangeScene">
+            <summary>Server command to change client scene.</summary>
+        </member>
+        <member name="F:FearValleyNetwork.NetOP.Operation.PropogateTroop">
+            <summary>Server command to send troop data.</summary>
+        </member>
+        <member name="F:FearValleyNetwork.NetOP.Operation.SendMagic">
+            <summary>Server command to send amount of spells.</summary>
+        </member>
+        <member name="F:FearValleyNetwork.NetOP.Operation.ToggleControls">
+            <summary>Server command to allow/disallow all controls.</summary>
+        </member>
+        <member name="T:FearValleyNetwork.NetMsg">
+            <summary>
+            Network message class.
+            </summary>
+        </member>
+        <member name="P:FearValleyNetwork.NetMsg.OperationCode">
+            <summary>
+            Inherited method to determine the type of message.
+            </summary>
+        </member>
+        <member name="M:FearValleyNetwork.NetMsg.#ctor">
+            <summary>
+            Constructor method.
+            </summary>
+        </member>
+        <member name="T:FearValleyNetwork.Net_AddTroop">
+            <summary>
+            <inheritdoc/>Add a troop to the server's database.
+            See <see cref="T:FearValleyNetwork.Net_FinishBuild"/> to finish build data.
+            </summary>
+        </member>
+        <member name="M:FearValleyNetwork.Net_AddTroop.#ctor">
+            <summary>
+            Constructor method.
+            </summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_AddTroop.TroopType">
+            <summary>Type of troop.</summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_AddTroop.WeaponType">
+            <summary>Weapon carried by troop.</summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_AddTroop.ArmorType">
+            <summary>Armor carried by troop.</summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_AddTroop.XPosRelative">
+            <summary>X position where they were placed, relative to thier perspective.</summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_AddTroop.ZPosRelative">
+            <summary>Z position where they were placed, relative to their perspective.</summary>
+        </member>
+        <member name="T:FearValleyNetwork.Net_ATTACK">
+            <summary>
+            <inheritdoc/>Tell the server that a troop has taken damage.
+            See <see cref="T:FearValleyNetwork.Net_MOVE"/> to send move data.
+            <seealso cref="T:FearValleyNetwork.Net_RETREAT"/>
+            </summary>
+        </member>
+        <member name="M:FearValleyNetwork.Net_ATTACK.#ctor">
+            <summary>
+            Constructor method.
+            </summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_ATTACK.TroopID">
+            <summary>Specific troop that has taken damage.</summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_ATTACK.DamageTaken">
+            <summary>The damage to be taken by the troop.</summary>
+        </member>
+        <member name="T:FearValleyNetwork.Net_ChangeScene">
+            <summary>
+            <inheritdoc/>Change the client's scene.
+            </summary>
+        </member>
+        <member name="M:FearValleyNetwork.Net_ChangeScene.#ctor">
+            <summary>
+            Constructor method.
+            </summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_ChangeScene.SceneName">
+            <summary>Name of the scene to change to.</summary>
+        </member>
+        <member name="T:FearValleyNetwork.Net_EndTurn">
+            <summary>
+            <inheritdoc/>Tell the server the client's turn is over. No information is passed along.
+            </summary>
+        </member>
+        <member name="M:FearValleyNetwork.Net_EndTurn.#ctor">
+            <summary>
+            Constructor method.
+            </summary>
+        </member>
+        <member name="T:FearValleyNetwork.Net_FinishBuild">
+            <summary>
+            <inheritdoc/>Tell the server that the client is finished building an army.
+            See <see cref="T:FearValleyNetwork.Net_AddTroop"/> to send troop data.
+            </summary>
+        </member>
+        <member name="M:FearValleyNetwork.Net_FinishBuild.#ctor">
+            <summary>
+            Constructor method.
+            </summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_FinishBuild.MagicBought">
+            <summary>Number of spells the client bought.</summary>
+        </member>
+        <member name="T:FearValleyNetwork.Net_MOVE">
+            <summary>
+            <inheritdoc/>Tell the server to move a troop to a new location.
+            See <see cref="T:FearValleyNetwork.Net_ATTACK"/> to send attack data.
+            <seealso cref="T:FearValleyNetwork.Net_RETREAT"/>
+            </summary>
+        </member>
+        <member name="M:FearValleyNetwork.Net_MOVE.#ctor">
+            <summary>
+            Constructor method.
+            </summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_MOVE.TroopID">
+            <summary>Specific troop to move.</summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_MOVE.NewX">
+            <summary>New X position, relative to client.</summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_MOVE.NewZ">
+            <summary>New Z position, relative to client.</summary>
+        </member>
+        <member name="T:FearValleyNetwork.Net_Propogate">
+            <summary>
+            <inheritdoc/>Send troop data to the client.
+            See <see cref="T:FearValleyNetwork.Net_SendMagic"/> to send magic.
+            </summary>
+        </member>
+        <member name="M:FearValleyNetwork.Net_Propogate.#ctor">
+            <summary>
+            Constructor method.
+            </summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_Propogate.Prefab">
+            <summary>Troop prefab to spawn.</summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_Propogate.TroopID">
+            <summary>Troop ID number.</summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_Propogate.ComingFrom">
+            <summary>Client connection number.</summary>
+            <remarks>
+            This will either be 1 or 255, since all clients think they are connection #1.
+            <para>However, since Unity v. 2019.3.6, clients now know which connection they are.</para>
+            </remarks>
+        </member>
+        <member name="P:FearValleyNetwork.Net_Propogate.TeamNum">
+            <summary>Troop team number.</summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_Propogate.Health">
+            <summary>Amount of health.</summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_Propogate.Movement">
+            <summary>Distance the troop can move on a turn.</summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_Propogate.AtkBonus">
+            <summary>Bonus to attack rolls.</summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_Propogate.DamageBonus">
+            <summary>The bonus to damage that a troop has, by being a leader/trained warrior.</summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_Propogate.AtkRange">
+            <summary>Range of attacks.</summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_Propogate.MaxAttackVal">
+            <summary>Size of the damage die.</summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_Propogate.DefenseMod">
+            <summary>Armor value of the troop.</summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_Propogate.AbsoluteXPos">
+            <summary>True X position on the board.</summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_Propogate.AbsoluteZPos">
+            <summary>True Z position on the board.</summary>
+        </member>
+        <member name="T:FearValleyNetwork.Net_RETREAT">
+            <summary>
+            <inheritdoc/>Tell the server which troop has retreated.
+            See <see cref="T:FearValleyNetwork.Net_MOVE"/> for movement.
+            <seealso cref="T:FearValleyNetwork.Net_ATTACK"/>
+            </summary>
+        </member>
+        <member name="M:FearValleyNetwork.Net_RETREAT.#ctor">
+            <summary>
+            Constructor method.
+            </summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_RETREAT.TroopID">
+            <summary>Troop to remove.</summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_RETREAT.TeamNum">
+            <summary>Team of the troop to remove.</summary>
+        </member>
+        <member name="T:FearValleyNetwork.Net_SendMagic">
+            <summary>
+            <inheritdoc/>Inform client how many spells they have.
+            See: <see cref="T:FearValleyNetwork.Net_Propogate"/> to send troop data.
+            </summary>
+        </member>
+        <member name="M:FearValleyNetwork.Net_SendMagic.#ctor">
+            <summary>
+            Constructor method.
+            </summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_SendMagic.MagicAmount">
+            <summary>The number of spells purchased.</summary>
+        </member>
+        <member name="T:FearValleyNetwork.Net_ToggleControls">
+            <summary>
+            <inheritdoc/>Toggle the clients controls. No information is passed along.
+            </summary>
+        </member>
+        <member name="M:FearValleyNetwork.Net_ToggleControls.#ctor">
+            <summary>
+            Constructor method.
+            </summary>
+        </member>
+    </members>
+</doc>
