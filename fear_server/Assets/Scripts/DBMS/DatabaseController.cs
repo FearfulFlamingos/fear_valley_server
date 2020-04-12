@@ -6,29 +6,39 @@ using Mono.Data.Sqlite;
 namespace Scripts.DBMS
 {
     /// <summary>
-    /// Class makes database interactions simpler.
+    /// The Database controller is the main way to access the single database we created.
+    /// It is easily extensible, with method definitions for three out of the four main operations:
+    /// <para><see cref="Create(string)"/></para>
+    /// <para><see cref="DatabaseController.Read(string)"/></para>
+    /// <para><see cref="Update(string)"/></para>
+    /// <para>Delete is covered by update, as they are functionally identical.</para>
     /// </summary>
+    /// <remarks>
+    /// More complex queries exist as methods. These are purpose built for the code that requires them,
+    /// since all database interactions are kept in the same file.
+    /// </remarks>
     public class DatabaseController
     {
-        //public static DatabaseController DBInstance { private set; get; }
-
         private readonly string dbpath = "URI=file:" + Application.dataPath + "/Data/fearful_data.sqlite";
         private IDbConnection dbcon;
 
         /// <summary>
-        /// Constructor for class. Opens a connection to our database.
+        /// Constructor for class.
         /// </summary>
         public DatabaseController()
         {
-            // connection created in instance
             dbcon = new SqliteConnection(dbpath);
-            dbcon.Open();
+            OpenDB();
         }
 
+        /// <summary>
+        /// Opens the Database connection.
+        /// </summary>
         public void OpenDB()
         {
             dbcon.Open();
         }
+        
         #region Basic Commands
         /// <summary>
         /// runs CREATE command. Used for "CREATE TABLE", etc.
@@ -105,7 +115,7 @@ namespace Scripts.DBMS
         /// <summary>
         /// Queries the DB and pulls all relevant info from tables.
         /// </summary>
-        /// <returns>List of Troop objects for easy use</returns>
+        /// <returns>List of Troop objects for easy use.</returns>
         public List<Troop> GetAllTroops()
         {
             List<Troop> allTroops = new List<Troop>();
@@ -129,11 +139,11 @@ namespace Scripts.DBMS
                     Armor = (int)troops.GetDouble(16) + 10, 
                     TroopAtkBonus = (int)troops.GetDouble(8), 
                     WeaponRange = (int)troops.GetDouble(14), 
-                    WeaponDamage = (int)troops.GetDouble(13), //WeapDmg
+                    WeaponDamage = (int)troops.GetDouble(13),
                     TroopDamageBonus = (int)troops.GetDouble(9),
                     Health = (int)troops.GetDouble(7), 
                     Movement = (int)troops.GetDouble(10), 
-                    Leader = false,//troops.GetBoolean(4),
+                    Leader = false, // troops.GetBoolean(4),
                     XPos = troops.GetFloat(5),
                     ZPos = troops.GetFloat(6)
 

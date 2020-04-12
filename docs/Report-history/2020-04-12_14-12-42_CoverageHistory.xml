@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<coverage version="1.0" date="2020-04-12_14-12-42" tag="">
+  <assembly name="Scriptsdef">
+    <class name="Scripts.DBMS.DatabaseController" coveredlines="0" coverablelines="57" totallines="200" coveredbranches="0" totalbranches="0" />
+    <class name="Scripts.DBMS.Troop" coveredlines="16" coverablelines="16" totallines="51" coveredbranches="0" totalbranches="0" />
+    <class name="Scripts.Networking.MonoServer" coveredlines="0" coverablelines="10" totallines="22" coveredbranches="0" totalbranches="0" />
+    <class name="Scripts.Networking.Server" coveredlines="0" coverablelines="185" totallines="398" coveredbranches="0" totalbranches="0" />
+  </assembly>
+</coverage>
