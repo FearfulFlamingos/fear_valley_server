@@ -11,12 +11,10 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEngine.TestTools;
 
-namespace Assets.Tests
+namespace EditorTests
 {
     public class TestTroop : MonoBehaviour
     {
-        GameObject serverObj;
-
         [Test]
         public void TestToString()
         {

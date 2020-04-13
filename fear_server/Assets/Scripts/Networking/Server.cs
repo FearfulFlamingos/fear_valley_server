@@ -20,13 +20,17 @@ namespace Scripts.Networking
 
         private byte reliableChannel;
         private int hostId;
-        private bool isStarted = false;
-        private byte error; // general error byte, see documentation
-        private int waitingConnections = 2;
+        public bool IsStarted { set; get; }
+        public byte error; // general error byte, see documentation
+        public int waitingConnections = 2;
 
-        private DatabaseController dbCont;
+        public IDatabaseController dbCont;
         private List<Troop> allTroops = new List<Troop>();
         private Dictionary<int, int> magics = new Dictionary<int, int>();
+        public NetworkEventType LastEvent { set; get; }
+        public NetMsg LastRecieved { set; get; }
+        public NetMsg LastSentToClient { set; get; }
+        public int LastClient { set; get; }
 
         /// <summary>
         /// Start the server.
@@ -52,24 +56,23 @@ namespace Scripts.Networking
             hostId = NetworkTransport.AddHost(topo, PORT);
 #pragma warning restore CS0618 // Type or member is obsolete
 
-            isStarted = true;
+            IsStarted = true;
             Debug.Log($"Started server on port {PORT}");
 
             // Clear out Army table for database
-            dbCont = new DatabaseController();
-            dbCont.Update("DELETE FROM Army;");
-            dbCont.Update("DELETE FROM Magic;");
+            if (dbCont == null)
+                dbCont = new DatabaseController();
+            dbCont.ClearPreviousGameData();
             dbCont.CloseDB();
-
-
         }
+
 
         /// <summary>
         /// Shut the server down.
         /// </summary>
         public void Shutdown()
         {
-            isStarted = false;
+            IsStarted = false;
 #pragma warning disable CS0618 // Type or member is obsolete
             NetworkTransport.Shutdown();
 #pragma warning restore CS0618 // Type or member is obsolete
@@ -80,7 +83,7 @@ namespace Scripts.Networking
         /// </summary>
         public void UpdateMessagePump()
         {
-            if (!isStarted)
+            if (!IsStarted)
                 return;
 
             int recHostId; // From web or standalone?
@@ -99,6 +102,11 @@ namespace Scripts.Networking
                 BYTE_SIZE,
                 out dataSize,
                 out error);
+            CheckMessageType(recHostId, connectionId, channelId, recievedBuffer, type);
+        }
+
+        public void CheckMessageType(int recHostId, int connectionId, int channelId, byte[] recievedBuffer, NetworkEventType type)
+        {
             switch (type)
             {
                 case NetworkEventType.Nothing:
@@ -123,6 +131,7 @@ namespace Scripts.Networking
                     Debug.Log("Unexpected network event type");
                     break;
             }
+            LastEvent = type;
         }
 
         #region OnData
@@ -162,6 +171,7 @@ namespace Scripts.Networking
                     Net_EndTurn(connId, channelId, recHostId, (Net_EndTurn)msg);
                     break;
             }
+            LastRecieved = msg;
         }
 
         private void Net_EndTurn(int connId, int channelId, int recHostId, Net_EndTurn msg)
@@ -292,6 +302,9 @@ namespace Scripts.Networking
                 out error);
             if (error != 0)
                 Debug.Log(error);
+
+            LastSentToClient = msg;
+            LastClient = connId;
         }
 
         /// <summary>
@@ -325,9 +338,9 @@ namespace Scripts.Networking
         public void PropogateTroops()
         {
             Debug.Log("Sending troops");
-            dbCont = new DatabaseController();
+            dbCont.OpenDB();
             allTroops = dbCont.GetAllTroops();
-            magics = dbCont.ReadMagicFromDB();
+            magics = dbCont.GetMagic();
             dbCont.CloseDB();
 
             foreach (Troop t in allTroops)

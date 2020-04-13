@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Data;
 using Mono.Data.Sqlite;
+using System;
 
 namespace Scripts.DBMS
 {
@@ -17,18 +18,92 @@ namespace Scripts.DBMS
     /// More complex queries exist as methods. These are purpose built for the code that requires them,
     /// since all database interactions are kept in the same file.
     /// </remarks>
-    public class DatabaseController
+    public class DatabaseController : IDatabaseController
     {
-        private readonly string dbpath = "URI=file:" + Application.dataPath + "/Data/fearful_data.sqlite";
-        private IDbConnection dbcon;
+        private readonly string dbpath = "URI=file:" + Application.persistentDataPath + "/fearful_data.sqlite";
+        private static IDbConnection dbcon;
 
         /// <summary>
-        /// Constructor for class.
+        /// Creates a new database connection and opens it.
         /// </summary>
         public DatabaseController()
         {
-            dbcon = new SqliteConnection(dbpath);
+            Debug.Log(dbpath);
+            if (!System.IO.File.Exists(Application.persistentDataPath + "/fearful_data.sqlite"))
+            {
+                Debug.Log("Creating database");
+                CreateDatabase();
+            }
+            else
+            {
+                dbcon = new SqliteConnection(dbpath);
+            }
             OpenDB();
+        }
+
+        private void CreateDatabase()
+        {
+            SqliteConnection.CreateFile(Application.persistentDataPath + "/fearful_data.sqlite");
+            dbcon = new SqliteConnection("URI=file:" + Application.persistentDataPath + "/fearful_data.sqlite;Version=3;");
+            dbcon.Open();
+            Create("CREATE TABLE Armor (" +
+                    "id integer PRIMARY KEY," +
+                    "armor text NOT NULL," +
+                    "bonus float," +
+                    "stealth float" +
+                    ", cost float)");
+            Update("INSERT INTO Armor (id, armor, bonus, stealth, cost) VALUES('1', 'Light mundane armor', '3.0', '0.0', '20.0');");
+            Update("INSERT INTO Armor (id, armor, bonus, stealth, cost) VALUES('2', 'Light magical armor', '3.0', '1.0', '40.0');");
+            Update("INSERT INTO Armor (id, armor, bonus, stealth, cost) VALUES('3', 'Heavy mundane armor', '5.0', '-2.0', '30.0');");
+            Update("INSERT INTO Armor (id, armor, bonus, stealth, cost) VALUES('4', 'Heavy magical armor', '5.0', '-1.0', '50.0');");
+            Update("INSERT INTO Armor (id, armor, bonus, stealth, cost) VALUES('5', 'Unarmored', '0.0', '2.0', '0.0');");
+
+            Create("CREATE TABLE Army(" +
+                "id integer PRIMARY KEY," +
+                "teamNumber INTEGER," +
+                "class TEXT," +
+                "armor text," +
+                "shield text," +
+                "weapon TEXT," +
+                "currentHealth INTEGER," +
+                "isLeader BOOLEAN" +
+                ", pos_x FLOAT, pox_z FLOAT)");
+            Update("INSERT INTO Army (id, teamNumber, class, armor, shield, weapon, currentHealth, isLeader) VALUES ('1','1','Peasant','Light mundane armor','','Unarmed','10','false');");
+
+            Create("CREATE TABLE Magic (" +
+                   "teamNum INTEGER," +
+                   "spellNum INTEGER)");
+
+            Create("CREATE TABLE Troop (" +
+                   "id integer PRIMARY KEY," +
+                   "class text NOT NULL," +
+                   "cost float," +
+                   "health float," +
+                   "attack float," +
+                   "damage float," +
+                   "movement float," +
+                   "perception float, magicattack float, magicDamage float)");
+
+            Update("INSERT INTO Troop(id, class, cost, health, attack, damage, movement, perception, magicattack, magicDamage) VALUES('1', 'Peasant', '10.0', '6.0', '4.0', '0.0', '4.0', '10.0', '', '');");
+            Update("INSERT INTO Troop(id, class, cost, health, attack, damage, movement, perception, magicattack, magicDamage) VALUES('2', 'Trained Warrior', '50.0', '16.0', '6.0', '2.0', '6.0', '12.0', '', '');");
+            Update("INSERT INTO Troop(id, class, cost, health, attack, damage, movement, perception, magicattack, magicDamage) VALUES('3', 'Magic User', '100.0', '10.0', '2.0', '-1.0', '4.0', '12.0', '5.0', '0.0');");
+
+            Create("CREATE TABLE Weapon (" +
+                   "id integer PRIMARY KEY," +
+                   "name text NOT NULL," +
+                   "cost float," +
+                   "damage float," +
+                   "attack float," +
+                   "range float" +
+                   ", AOE float)");
+
+            Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('1', 'Unarmed', '0.0', '1.0', '1.0', '1.0', '1.0');");
+            Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('2', 'Polearm', '10.0', '6.0', '1.0', '1.0', '1.0');");
+            Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('3', 'Two-handed weapon', '20.0', '10.0', '1.0', '1.0', '1.0');");
+            Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('4', 'One-handed weapon', '15.0', '8.0', '1.0', '1.0', '1.0');");
+            Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('5', 'Ranged attack', '25.0', '6.0', '2.0', '8.0', '1.0');");
+            Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('6', 'Magical Explosion', '10.0', '12.0', '3.0', '10.0', '4.0');");
+            CloseDB();
         }
 
         /// <summary>
@@ -38,7 +113,7 @@ namespace Scripts.DBMS
         {
             dbcon.Open();
         }
-        
+
         #region Basic Commands
         /// <summary>
         /// runs CREATE command. Used for "CREATE TABLE", etc.
@@ -85,6 +160,20 @@ namespace Scripts.DBMS
         #endregion
 
         #region Complex Queries
+
+        public void ClearPreviousGameData()
+        {
+            try
+            {
+                Update("DELETE FROM Army;");
+                Update("DELETE FROM Magic;");
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e);
+            }
+        }
+
         /// <summary>
         /// Adds a troop to the database. Assumes the client has enough money.
         /// </summary>
@@ -134,20 +223,20 @@ namespace Scripts.DBMS
                 Troop t = new Troop()
                 {
                     TroopID = troops.GetInt32(0),
-                    TeamNum = troops.GetInt32(1), 
-                    TroopType = troops.GetString(2), 
-                    Armor = (int)troops.GetDouble(16) + 10, 
-                    TroopAtkBonus = (int)troops.GetDouble(8), 
-                    WeaponRange = (int)troops.GetDouble(14), 
+                    TeamNum = troops.GetInt32(1),
+                    TroopType = troops.GetString(2),
+                    Armor = (int)troops.GetDouble(16) + 10,
+                    TroopAtkBonus = (int)troops.GetDouble(8),
+                    WeaponRange = (int)troops.GetDouble(14),
                     WeaponDamage = (int)troops.GetDouble(13),
                     TroopDamageBonus = (int)troops.GetDouble(9),
-                    Health = (int)troops.GetDouble(7), 
-                    Movement = (int)troops.GetDouble(10), 
+                    Health = (int)troops.GetDouble(7),
+                    Movement = (int)troops.GetDouble(10),
                     Leader = false, // troops.GetBoolean(4),
                     XPos = troops.GetFloat(5),
                     ZPos = troops.GetFloat(6)
 
-            };
+                };
                 allTroops.Add(t);
             }
 
@@ -172,7 +261,7 @@ namespace Scripts.DBMS
         /// Reads the Magic table in its entirety and returns it as a dictionary.
         /// </summary>
         /// <returns>Dictionary object of ConnectionID to Magic Charge amount.</returns>
-        public Dictionary<int, int> ReadMagicFromDB()
+        public Dictionary<int, int> GetMagic()
         {
             Dictionary<int, int> magic = new Dictionary<int, int>();
             IDataReader magicInDB = Read("SELECT * FROM Magic;");
