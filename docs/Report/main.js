@@ -224,14 +224,14 @@ var assemblies = [
   {
     "name": "Scriptsdef",
     "classes": [
-      { "name": "Scripts.DBMS.DatabaseController", "rp": "Scriptsdef_DatabaseController.htm", "cl": 83, "ucl": 14, "cal": 97, "tl": 280, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [85.5], "bch": [], "hc": [{ "et": "4/13/2020 - 11:00:00 PM", "cl": 83, "ucl": 14, "cal": 97, "tl": 280, "lcq": 85.5, "cb": 0, "tb": 0, "bcq": 0 }] },
-      { "name": "Scripts.DBMS.Troop", "rp": "Scriptsdef_Troop.htm", "cl": 16, "ucl": 0, "cal": 16, "tl": 51, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [100], "bch": [], "hc": [{ "et": "4/13/2020 - 11:00:00 PM", "cl": 16, "ucl": 0, "cal": 16, "tl": 51, "lcq": 100, "cb": 0, "tb": 0, "bcq": 0 }] },
-      { "name": "Scripts.Networking.MonoServer", "rp": "Scriptsdef_MonoServer.htm", "cl": 10, "ucl": 0, "cal": 10, "tl": 27, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [100], "bch": [], "hc": [{ "et": "4/13/2020 - 11:00:00 PM", "cl": 10, "ucl": 0, "cal": 10, "tl": 27, "lcq": 100, "cb": 0, "tb": 0, "bcq": 0 }] },
-      { "name": "Scripts.Networking.Server", "rp": "Scriptsdef_Server.htm", "cl": 196, "ucl": 0, "cal": 196, "tl": 427, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [100], "bch": [], "hc": [{ "et": "4/13/2020 - 11:00:00 PM", "cl": 196, "ucl": 0, "cal": 196, "tl": 427, "lcq": 100, "cb": 0, "tb": 0, "bcq": 0 }] },
+      { "name": "Scripts.DBMS.DatabaseController", "rp": "Scriptsdef_DatabaseController.htm", "cl": 91, "ucl": 0, "cal": 91, "tl": 273, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [85.5,49.4,100], "bch": [], "hc": [{ "et": "4/13/2020 - 11:00:00 PM", "cl": 83, "ucl": 14, "cal": 97, "tl": 280, "lcq": 85.5, "cb": 0, "tb": 0, "bcq": 0 }, { "et": "4/13/2020 - 11:18:34 PM", "cl": 48, "ucl": 49, "cal": 97, "tl": 280, "lcq": 49.4, "cb": 0, "tb": 0, "bcq": 0 }, { "et": "4/13/2020 - 11:28:49 PM", "cl": 91, "ucl": 0, "cal": 91, "tl": 273, "lcq": 100, "cb": 0, "tb": 0, "bcq": 0 }] },
+      { "name": "Scripts.DBMS.Troop", "rp": "Scriptsdef_Troop.htm", "cl": 16, "ucl": 0, "cal": 16, "tl": 51, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [100], "bch": [], "hc": [{ "et": "4/13/2020 - 11:00:00 PM", "cl": 16, "ucl": 0, "cal": 16, "tl": 51, "lcq": 100, "cb": 0, "tb": 0, "bcq": 0 }, { "et": "4/13/2020 - 11:18:34 PM", "cl": 16, "ucl": 0, "cal": 16, "tl": 51, "lcq": 100, "cb": 0, "tb": 0, "bcq": 0 }, { "et": "4/13/2020 - 11:28:49 PM", "cl": 16, "ucl": 0, "cal": 16, "tl": 51, "lcq": 100, "cb": 0, "tb": 0, "bcq": 0 }] },
+      { "name": "Scripts.Networking.MonoServer", "rp": "Scriptsdef_MonoServer.htm", "cl": 10, "ucl": 0, "cal": 10, "tl": 27, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [100], "bch": [], "hc": [{ "et": "4/13/2020 - 11:00:00 PM", "cl": 10, "ucl": 0, "cal": 10, "tl": 27, "lcq": 100, "cb": 0, "tb": 0, "bcq": 0 }, { "et": "4/13/2020 - 11:18:34 PM", "cl": 10, "ucl": 0, "cal": 10, "tl": 27, "lcq": 100, "cb": 0, "tb": 0, "bcq": 0 }, { "et": "4/13/2020 - 11:28:49 PM", "cl": 10, "ucl": 0, "cal": 10, "tl": 27, "lcq": 100, "cb": 0, "tb": 0, "bcq": 0 }] },
+      { "name": "Scripts.Networking.Server", "rp": "Scriptsdef_Server.htm", "cl": 196, "ucl": 0, "cal": 196, "tl": 427, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [100], "bch": [], "hc": [{ "et": "4/13/2020 - 11:00:00 PM", "cl": 196, "ucl": 0, "cal": 196, "tl": 427, "lcq": 100, "cb": 0, "tb": 0, "bcq": 0 }, { "et": "4/13/2020 - 11:18:34 PM", "cl": 196, "ucl": 0, "cal": 196, "tl": 427, "lcq": 100, "cb": 0, "tb": 0, "bcq": 0 }, { "et": "4/13/2020 - 11:28:49 PM", "cl": 196, "ucl": 0, "cal": 196, "tl": 427, "lcq": 100, "cb": 0, "tb": 0, "bcq": 0 }] },
     ]},
 ];
 
-var historicCoverageExecutionTimes = [];
+var historicCoverageExecutionTimes = ["4/13/2020 - 11:18:34 PM", "4/13/2020 - 11:00:00 PM"];
 
 var riskHotspotMetrics = [
 ];

@@ -1,22 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CoverageReport scope="Summary">
   <Summary>
-    <Generatedon>4/13/2020 - 11:00:02 PM</Generatedon>
-    <Parser>MultiReportParser (2x OpenCoverParser)</Parser>
+    <Generatedon>4/13/2020 - 11:28:50 PM</Generatedon>
+    <Parser>MultiReportParser (2x CoberturaParser, 2x OpenCoverParser)</Parser>
     <Assemblies>1</Assemblies>
     <Classes>4</Classes>
     <Files>4</Files>
-    <Coveredlines>305</Coveredlines>
-    <Uncoveredlines>14</Uncoveredlines>
-    <Coverablelines>319</Coverablelines>
-    <Totallines>785</Totallines>
-    <Linecoverage>95.6</Linecoverage>
+    <Coveredlines>313</Coveredlines>
+    <Uncoveredlines>0</Uncoveredlines>
+    <Coverablelines>313</Coverablelines>
+    <Totallines>778</Totallines>
+    <Linecoverage>100</Linecoverage>
     <Coveredbranches>0</Coveredbranches>
     <Totalbranches>0</Totalbranches>
   </Summary>
   <Coverage>
-    <Assembly name="Scriptsdef" classes="4" coverage="95.6" coveredlines="305" coverablelines="319" totallines="785" branchcoverage="" coveredbranches="0" totalbranches="0">
-      <Class name="Scripts.DBMS.DatabaseController" coverage="85.5" coveredlines="83" coverablelines="97" totallines="280" branchcoverage="" coveredbranches="0" totalbranches="0" />
+    <Assembly name="Scriptsdef" classes="4" coverage="100" coveredlines="313" coverablelines="313" totallines="778" branchcoverage="" coveredbranches="0" totalbranches="0">
+      <Class name="Scripts.DBMS.DatabaseController" coverage="100" coveredlines="91" coverablelines="91" totallines="273" branchcoverage="" coveredbranches="0" totalbranches="0" />
       <Class name="Scripts.DBMS.Troop" coverage="100" coveredlines="16" coverablelines="16" totallines="51" branchcoverage="" coveredbranches="0" totalbranches="0" />
       <Class name="Scripts.Networking.MonoServer" coverage="100" coveredlines="10" coverablelines="10" totallines="27" branchcoverage="" coveredbranches="0" totalbranches="0" />
       <Class name="Scripts.Networking.Server" coverage="100" coveredlines="196" coverablelines="196" totallines="427" branchcoverage="" coveredbranches="0" totalbranches="0" />

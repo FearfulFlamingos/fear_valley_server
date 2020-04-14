@@ -164,15 +164,8 @@ namespace Scripts.DBMS
 
         public void ClearPreviousGameData()
         {
-            try
-            {
-                Update("DELETE FROM Army;");
-                Update("DELETE FROM Magic;");
-            }
-            catch (Exception e)
-            {
-                Debug.Log(e);
-            }
+            Update("DELETE FROM Army;");
+            Update("DELETE FROM Magic;");
         }
 
         /// <summary>
