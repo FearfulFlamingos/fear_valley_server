@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CoverageReport scope="Summary">
   <Summary>
-    <Generatedon>4/13/2020 - 4:48:15 PM</Generatedon>
-    <Parser>MultiReportParser (6x CoberturaParser, 2x OpenCoverParser)</Parser>
+    <Generatedon>4/13/2020 - 11:00:02 PM</Generatedon>
+    <Parser>MultiReportParser (2x OpenCoverParser)</Parser>
     <Assemblies>1</Assemblies>
     <Classes>4</Classes>
     <Files>4</Files>
-    <Coveredlines>175</Coveredlines>
-    <Uncoveredlines>100</Uncoveredlines>
-    <Coverablelines>275</Coverablelines>
-    <Totallines>696</Totallines>
-    <Linecoverage>63.6</Linecoverage>
+    <Coveredlines>305</Coveredlines>
+    <Uncoveredlines>14</Uncoveredlines>
+    <Coverablelines>319</Coverablelines>
+    <Totallines>785</Totallines>
+    <Linecoverage>95.6</Linecoverage>
     <Coveredbranches>0</Coveredbranches>
     <Totalbranches>0</Totalbranches>
   </Summary>
   <Coverage>
-    <Assembly name="Scriptsdef" classes="4" coverage="63.6" coveredlines="175" coverablelines="275" totallines="696" branchcoverage="" coveredbranches="0" totalbranches="0">
-      <Class name="Scripts.DBMS.DatabaseController" coverage="65.3" coveredlines="34" coverablelines="52" totallines="190" branchcoverage="" coveredbranches="0" totalbranches="0" />
+    <Assembly name="Scriptsdef" classes="4" coverage="95.6" coveredlines="305" coverablelines="319" totallines="785" branchcoverage="" coveredbranches="0" totalbranches="0">
+      <Class name="Scripts.DBMS.DatabaseController" coverage="85.5" coveredlines="83" coverablelines="97" totallines="280" branchcoverage="" coveredbranches="0" totalbranches="0" />
       <Class name="Scripts.DBMS.Troop" coverage="100" coveredlines="16" coverablelines="16" totallines="51" branchcoverage="" coveredbranches="0" totalbranches="0" />
-      <Class name="Scripts.Networking.MonoServer" coverage="10" coveredlines="1" coverablelines="10" totallines="27" branchcoverage="" coveredbranches="0" totalbranches="0" />
-      <Class name="Scripts.Networking.Server" coverage="62.9" coveredlines="124" coverablelines="197" totallines="428" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Scripts.Networking.MonoServer" coverage="100" coveredlines="10" coverablelines="10" totallines="27" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Scripts.Networking.Server" coverage="100" coveredlines="196" coverablelines="196" totallines="427" branchcoverage="" coveredbranches="0" totalbranches="0" />
     </Assembly>
   </Coverage>
 </CoverageReport>

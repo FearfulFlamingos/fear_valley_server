@@ -21,7 +21,7 @@ namespace Scripts.DBMS
     public class DatabaseController : IDatabaseController
     {
         private readonly string dbpath = "URI=file:" + Application.persistentDataPath + "/fearful_data.sqlite";
-        private static IDbConnection dbcon;
+        public static IDbConnection dbcon;
 
         /// <summary>
         /// Creates a new database connection and opens it.
@@ -155,6 +155,7 @@ namespace Scripts.DBMS
         /// </summary>
         public void CloseDB()
         {
+            dbcon.Dispose();
             dbcon.Close();
         }
         #endregion
