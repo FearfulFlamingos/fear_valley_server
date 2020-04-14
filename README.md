@@ -1,6 +1,6 @@
 # Fear Valley Server
 
-[[!code coverage](https://github.com/FearfulFlamingos/fear_valley_server/blob/master/docs/badge_linecoverage.png)](https://fearfulflamingos.github.io/fear_valley_server)
+[![code coverage](https://github.com/FearfulFlamingos/fear_valley_server/blob/master/docs/Report/badge_linecoverage.png)](https://fearfulflamingos.github.io/fear_valley_server/Report/index.html)
 
 This is the server build for the game [Fear Valley](https://www.github.com/schuna05/senior_project). In order to play the game, you must download and run the server first. After that, two people on your local network will be able to play against each other.
 
