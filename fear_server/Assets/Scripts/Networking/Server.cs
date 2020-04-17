@@ -183,19 +183,26 @@ namespace Scripts.Networking
 
         private void Net_RETREAT(int connId, int channelId, int recHostId, Net_RETREAT msg)
         {
-            Debug.Log($"Attack {msg.TroopID} with damage");
-            switch (connId)
+            switch (msg.ForceEnemyToRetreat)
             {
-                case 1:
-                    SendToClient(0, 2, msg);
+                case true:
+                    Debug.Log($"Connection {connId} says that Troop {msg.TroopID} on team {msg.TeamNum} is dead");
+                    msg.TeamNum = 1;
+                    if (connId == 1)
+                        SendToClient(0, 2, msg);
+                    else
+                        SendToClient(0, 1, msg);
                     break;
-                case 2:
-                    SendToClient(0, 1, msg);
-                    break;
-                default:
-                    Debug.Log("Unknown connectionID, disconnected?");
+                case false:
+                    Debug.Log($"Connection {connId} sent retreat command for Troop {msg.TroopID} on team {msg.TeamNum}");
+                    msg.TeamNum = 2;
+                    if (connId == 1)
+                        SendToClient(0, 2, msg);
+                    else
+                        SendToClient(0, 1, msg);
                     break;
             }
+
         }
         private void Net_ATTACK(int connId, int channelId, int recHostId, Net_ATTACK msg)
         {

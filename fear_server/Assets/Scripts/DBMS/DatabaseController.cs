@@ -97,10 +97,10 @@ namespace Scripts.DBMS
                    "range float" +
                    ", AOE float)");
 
-            Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('1', 'Unarmed', '0.0', '1.0', '1.0', '1.0', '1.0');");
-            Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('2', 'Polearm', '10.0', '6.0', '1.0', '1.0', '1.0');");
-            Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('3', 'Two-handed weapon', '20.0', '10.0', '1.0', '1.0', '1.0');");
-            Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('4', 'One-handed weapon', '15.0', '8.0', '1.0', '1.0', '1.0');");
+            Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('1', 'Unarmed', '0.0', '1.0', '1.0', '3.0', '1.0');");
+            Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('2', 'Polearm', '10.0', '6.0', '1.0', '3.0', '1.0');");
+            Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('3', 'Two-handed weapon', '20.0', '10.0', '1.0', '3.0', '1.0');");
+            Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('4', 'One-handed weapon', '15.0', '8.0', '1.0', '3.0', '1.0');");
             Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('5', 'Ranged attack', '25.0', '6.0', '2.0', '8.0', '1.0');");
             Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('6', 'Magical Explosion', '10.0', '12.0', '3.0', '10.0', '4.0');");
             CloseDB();

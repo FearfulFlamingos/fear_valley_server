@@ -243,6 +243,9 @@
         <member name="P:FearValleyNetwork.Net_RETREAT.TeamNum">
             <summary>Team of the troop to remove.</summary>
         </member>
+        <member name="P:FearValleyNetwork.Net_RETREAT.ForceEnemyToRetreat">
+            <summary>Check if this is causing an enemy to retreat.</summary>
+        </member>
         <member name="T:FearValleyNetwork.Net_SendMagic">
             <summary>
             <inheritdoc/>Inform client how many spells they have.
