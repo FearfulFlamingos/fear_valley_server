@@ -52,10 +52,10 @@ namespace Scripts.DBMS
                     "bonus float," +
                     "stealth float" +
                     ", cost float)");
-            Update("INSERT INTO Armor (id, armor, bonus, stealth, cost) VALUES('1', 'Light mundane armor', '3.0', '0.0', '20.0');");
-            Update("INSERT INTO Armor (id, armor, bonus, stealth, cost) VALUES('2', 'Light magical armor', '3.0', '1.0', '40.0');");
-            Update("INSERT INTO Armor (id, armor, bonus, stealth, cost) VALUES('3', 'Heavy mundane armor', '5.0', '-2.0', '30.0');");
-            Update("INSERT INTO Armor (id, armor, bonus, stealth, cost) VALUES('4', 'Heavy magical armor', '5.0', '-1.0', '50.0');");
+            Update("INSERT INTO Armor (id, armor, bonus, stealth, cost) VALUES('1', 'LightMundaneArmor', '3.0', '0.0', '20.0');");
+            Update("INSERT INTO Armor (id, armor, bonus, stealth, cost) VALUES('2', 'LightMagicalArmor', '3.0', '1.0', '40.0');");
+            Update("INSERT INTO Armor (id, armor, bonus, stealth, cost) VALUES('3', 'HeavyMundaneArmor', '5.0', '-2.0', '30.0');");
+            Update("INSERT INTO Armor (id, armor, bonus, stealth, cost) VALUES('4', 'HeavyMagicalArmor', '5.0', '-1.0', '50.0');");
             Update("INSERT INTO Armor (id, armor, bonus, stealth, cost) VALUES('5', 'Unarmored', '0.0', '2.0', '0.0');");
 
             Create("CREATE TABLE Army(" +
@@ -85,8 +85,8 @@ namespace Scripts.DBMS
                    "perception float, magicattack float, magicDamage float)");
 
             Update("INSERT INTO Troop(id, class, cost, health, attack, damage, movement, perception, magicattack, magicDamage) VALUES('1', 'Peasant', '10.0', '6.0', '4.0', '0.0', '4.0', '10.0', '', '');");
-            Update("INSERT INTO Troop(id, class, cost, health, attack, damage, movement, perception, magicattack, magicDamage) VALUES('2', 'Trained Warrior', '50.0', '16.0', '6.0', '2.0', '6.0', '12.0', '', '');");
-            Update("INSERT INTO Troop(id, class, cost, health, attack, damage, movement, perception, magicattack, magicDamage) VALUES('3', 'Magic User', '100.0', '10.0', '2.0', '-1.0', '4.0', '12.0', '5.0', '0.0');");
+            Update("INSERT INTO Troop(id, class, cost, health, attack, damage, movement, perception, magicattack, magicDamage) VALUES('2', 'TrainedWarrior', '50.0', '16.0', '6.0', '2.0', '6.0', '12.0', '', '');");
+            Update("INSERT INTO Troop(id, class, cost, health, attack, damage, movement, perception, magicattack, magicDamage) VALUES('3', 'MagicUser', '100.0', '10.0', '2.0', '-1.0', '4.0', '12.0', '5.0', '0.0');");
 
             Create("CREATE TABLE Weapon (" +
                    "id integer PRIMARY KEY," +
@@ -99,10 +99,10 @@ namespace Scripts.DBMS
 
             Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('1', 'Unarmed', '0.0', '1.0', '1.0', '3.0', '1.0');");
             Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('2', 'Polearm', '10.0', '6.0', '1.0', '3.0', '1.0');");
-            Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('3', 'Two-handed weapon', '20.0', '10.0', '1.0', '3.0', '1.0');");
-            Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('4', 'One-handed weapon', '15.0', '8.0', '1.0', '3.0', '1.0');");
-            Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('5', 'Ranged attack', '25.0', '6.0', '2.0', '8.0', '1.0');");
-            Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('6', 'Magical Explosion', '10.0', '12.0', '3.0', '10.0', '4.0');");
+            Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('3', 'TwoHandedWeapon', '20.0', '10.0', '1.0', '3.0', '1.0');");
+            Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('4', 'OneHandedWeapon', '15.0', '8.0', '1.0', '3.0', '1.0');");
+            Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('5', 'RangedAttack', '25.0', '6.0', '2.0', '8.0', '1.0');");
+            Update("INSERT INTO Weapon(id, name, cost, damage, attack, range, AOE) VALUES('6', 'MagicalExplosion', '10.0', '12.0', '3.0', '10.0', '4.0');");
             CloseDB();
         }
 
