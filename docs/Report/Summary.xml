@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CoverageReport scope="Summary">
   <Summary>
-    <Generatedon>4/17/2020 - 1:15:05 PM</Generatedon>
-    <Parser>MultiReportParser (4x CoberturaParser, 2x OpenCoverParser)</Parser>
+    <Generatedon>4/27/2020 - 12:00:55 PM</Generatedon>
+    <Parser>MultiReportParser (2x OpenCoverParser)</Parser>
     <Assemblies>1</Assemblies>
     <Classes>4</Classes>
     <Files>4</Files>
-    <Coveredlines>312</Coveredlines>
-    <Uncoveredlines>6</Uncoveredlines>
-    <Coverablelines>318</Coverablelines>
-    <Totallines>785</Totallines>
-    <Linecoverage>98.1</Linecoverage>
+    <Coveredlines>328</Coveredlines>
+    <Uncoveredlines>0</Uncoveredlines>
+    <Coverablelines>328</Coverablelines>
+    <Totallines>802</Totallines>
+    <Linecoverage>100</Linecoverage>
     <Coveredbranches>0</Coveredbranches>
     <Totalbranches>0</Totalbranches>
   </Summary>
   <Coverage>
-    <Assembly name="Scriptsdef" classes="4" coverage="98.1" coveredlines="312" coverablelines="318" totallines="785" branchcoverage="" coveredbranches="0" totalbranches="0">
+    <Assembly name="Scriptsdef" classes="4" coverage="100" coveredlines="328" coverablelines="328" totallines="802" branchcoverage="" coveredbranches="0" totalbranches="0">
       <Class name="Scripts.DBMS.DatabaseController" coverage="100" coveredlines="91" coverablelines="91" totallines="273" branchcoverage="" coveredbranches="0" totalbranches="0" />
       <Class name="Scripts.DBMS.Troop" coverage="100" coveredlines="16" coverablelines="16" totallines="51" branchcoverage="" coveredbranches="0" totalbranches="0" />
       <Class name="Scripts.Networking.MonoServer" coverage="100" coveredlines="10" coverablelines="10" totallines="27" branchcoverage="" coveredbranches="0" totalbranches="0" />
-      <Class name="Scripts.Networking.Server" coverage="97" coveredlines="195" coverablelines="201" totallines="434" branchcoverage="" coveredbranches="0" totalbranches="0" />
+      <Class name="Scripts.Networking.Server" coverage="100" coveredlines="211" coverablelines="211" totallines="451" branchcoverage="" coveredbranches="0" totalbranches="0" />
     </Assembly>
   </Coverage>
 </CoverageReport>

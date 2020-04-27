@@ -54,6 +54,9 @@
         <member name="F:FearValleyNetwork.NetOP.Operation.ToggleControls">
             <summary>Server command to allow/disallow all controls.</summary>
         </member>
+        <member name="F:FearValleyNetwork.NetOP.Operation.UpdateEnemyName">
+            <summary>Server command to pass an updated enemy name.</summary>
+        </member>
         <member name="T:FearValleyNetwork.NetMsg">
             <summary>
             Network message class.
@@ -149,6 +152,9 @@
         </member>
         <member name="P:FearValleyNetwork.Net_FinishBuild.MagicBought">
             <summary>Number of spells the client bought.</summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_FinishBuild.Username">
+            <summary>Public username the player wishes to present.</summary>
         </member>
         <member name="T:FearValleyNetwork.Net_MOVE">
             <summary>
@@ -269,6 +275,19 @@
             <summary>
             Constructor method.
             </summary>
+        </member>
+        <member name="T:FearValleyNetwork.Net_UpdateEnemyName">
+            <summary>
+            <inheritdoc/>Tell the server to let other clients know to update client name.
+            </summary>
+        </member>
+        <member name="M:FearValleyNetwork.Net_UpdateEnemyName.#ctor">
+            <summary>
+            Constructor method.
+            </summary>
+        </member>
+        <member name="P:FearValleyNetwork.Net_UpdateEnemyName.Name">
+            <summary>New enemy name.</summary>
         </member>
     </members>
 </doc>

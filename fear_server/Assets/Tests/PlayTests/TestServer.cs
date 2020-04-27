@@ -135,6 +135,54 @@ namespace PlayTests
         }
 
         [UnityTest]
+        public IEnumerator TestNet_RETREATFromConnection1ToKillEnemy()
+        {
+            Net_RETREAT message = new Net_RETREAT()
+            {
+                TroopID = 1,
+                ForceEnemyToRetreat = true
+            };
+            byte[] buffer = new byte[1024];
+            BinaryFormatter formatter = new BinaryFormatter();
+            MemoryStream ms = new MemoryStream(buffer);
+            formatter.Serialize(ms, message);
+
+            // Act
+            MonoServer.Instance.CheckMessageType(0, 1, 0, buffer, NetworkEventType.DataEvent);
+            yield return null;
+
+            // Assert
+            Net_RETREAT actual = (Net_RETREAT)MonoServer.Instance.LastSentToClient;
+            Assert.AreEqual((byte)NetOP.Operation.RETREAT, actual.OperationCode);
+            Assert.AreEqual(2, MonoServer.Instance.LastClient);
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator TestNet_RETREATFromConnection2ToKillEnemy()
+        {
+            Net_RETREAT message = new Net_RETREAT()
+            {
+                TroopID = 1,
+                ForceEnemyToRetreat = true
+            };
+            byte[] buffer = new byte[1024];
+            BinaryFormatter formatter = new BinaryFormatter();
+            MemoryStream ms = new MemoryStream(buffer);
+            formatter.Serialize(ms, message);
+
+            // Act
+            MonoServer.Instance.CheckMessageType(0, 2, 0, buffer, NetworkEventType.DataEvent);
+            yield return null;
+
+            // Assert
+            Net_RETREAT actual = (Net_RETREAT)MonoServer.Instance.LastSentToClient;
+            Assert.AreEqual((byte)NetOP.Operation.RETREAT, actual.OperationCode);
+            Assert.AreEqual(1, MonoServer.Instance.LastClient);
+            yield return null;
+        }
+
+        [UnityTest]
         public IEnumerator TestNet_RETREATFromUnknownConnection()
         {
             Net_RETREAT message = new Net_RETREAT()
@@ -340,6 +388,42 @@ namespace PlayTests
 
             // Act
             MonoServer.Instance.CheckMessageType(0, 3, 0, buffer, NetworkEventType.DataEvent);
+            yield return null;
+
+            // Assert
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator TestChangeEnemyNameFromConnection1()
+        {
+            // Arrange
+            Net_UpdateEnemyName message = new Net_UpdateEnemyName();
+            byte[] buffer = new byte[1024];
+            BinaryFormatter formatter = new BinaryFormatter();
+            MemoryStream ms = new MemoryStream(buffer);
+            formatter.Serialize(ms, message);
+
+            // Act
+            MonoServer.Instance.CheckMessageType(0, 1, 0, buffer, NetworkEventType.DataEvent);
+            yield return null;
+
+            // Assert
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator TestChangeEnemyNameFromConnection2()
+        {
+            // Arrange
+            Net_UpdateEnemyName message = new Net_UpdateEnemyName();
+            byte[] buffer = new byte[1024];
+            BinaryFormatter formatter = new BinaryFormatter();
+            MemoryStream ms = new MemoryStream(buffer);
+            formatter.Serialize(ms, message);
+
+            // Act
+            MonoServer.Instance.CheckMessageType(0, 2, 0, buffer, NetworkEventType.DataEvent);
             yield return null;
 
             // Assert

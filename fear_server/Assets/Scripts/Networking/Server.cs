@@ -170,8 +170,25 @@ namespace Scripts.Networking
                     Debug.Log($"NETOP: End P{connId} turn");
                     Net_EndTurn(connId, channelId, recHostId, (Net_EndTurn)msg);
                     break;
+                case (byte)NetOP.Operation.UpdateEnemyName:
+                    Debug.Log("NETOP: Change Enemy Name");
+                    Net_ChangeEnemyName(connId, channelId, recHostId, (Net_UpdateEnemyName)msg);
+                    break;
             }
             LastRecieved = msg;
+        }
+
+        private void Net_ChangeEnemyName(int connId, int channelId, int recHostId, Net_UpdateEnemyName msg)
+        {
+            switch(connId)
+            {
+                case 1:
+                    SendToClient(0, 2, msg);
+                    break;
+                case 2:
+                    SendToClient(0, 1, msg);
+                    break;
+            }
         }
 
         private void Net_EndTurn(int connId, int channelId, int recHostId, Net_EndTurn msg)
