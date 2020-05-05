@@ -223,7 +223,7 @@ namespace Scripts.Networking
         }
         private void Net_ATTACK(int connId, int channelId, int recHostId, Net_ATTACK msg)
         {
-            Debug.Log($"Attack {msg.TroopID} with damage");
+            Debug.Log($"Attack {msg.TroopID} with {msg.DamageTaken} damage");
             switch (connId)
             {
                 case 1:
