@@ -7,6 +7,9 @@ using UnityEngine.Networking;
 using FearValleyNetwork;
 using Scripts.DBMS;
 
+/// <summary>
+/// All networking related scripts and functions are here.
+/// </summary>
 namespace Scripts.Networking
 {
     /// <summary>
@@ -27,9 +30,17 @@ namespace Scripts.Networking
         public IDatabaseController dbCont;
         private List<Troop> allTroops = new List<Troop>();
         private Dictionary<int, int> magics = new Dictionary<int, int>();
+        
+        /// <summary>Used for testing.</summary>
         public NetworkEventType LastEvent { set; get; }
+        
+        /// <summary>Used for testing.</summary>
         public NetMsg LastRecieved { set; get; }
+        
+        /// <summary>Used for testing.</summary>
         public NetMsg LastSentToClient { set; get; }
+        
+        /// <summary>Used for testing.</summary>
         public int LastClient { set; get; }
 
         /// <summary>
@@ -105,6 +116,18 @@ namespace Scripts.Networking
             CheckMessageType(recHostId, connectionId, channelId, recievedBuffer, type);
         }
 
+        /// <summary>
+        /// Checks the network event type of the incoming net message and acts appropriately.
+        /// </summary>
+        /// <remarks>
+        /// Public due to testing, could easily have been a part of 
+        /// <see cref="UpdateMessagePump"/>
+        /// </remarks>
+        /// <param name="recHostId">Which client is it coming from</param>
+        /// <param name="connectionId">Which connection is being used.</param>
+        /// <param name="channelId">Which channel is being used.</param>
+        /// <param name="recievedBuffer">Data sent with message (if applicable).</param>
+        /// <param name="type">Type of network event.</param>
         public void CheckMessageType(int recHostId, int connectionId, int channelId, byte[] recievedBuffer, NetworkEventType type)
         {
             switch (type)
@@ -178,6 +201,7 @@ namespace Scripts.Networking
             LastRecieved = msg;
         }
 
+        // change the enemy name for the other client
         private void Net_ChangeEnemyName(int connId, int channelId, int recHostId, Net_UpdateEnemyName msg)
         {
             switch(connId)
@@ -191,6 +215,7 @@ namespace Scripts.Networking
             }
         }
 
+        // end the clients turn
         private void Net_EndTurn(int connId, int channelId, int recHostId, Net_EndTurn msg)
         {
             Debug.Log("Toggling controls for all players");
@@ -198,6 +223,7 @@ namespace Scripts.Networking
             ToggleControls(2);
         }
 
+        // send a retreat request from one client to the other.
         private void Net_RETREAT(int connId, int channelId, int recHostId, Net_RETREAT msg)
         {
             switch (msg.ForceEnemyToRetreat)
@@ -221,6 +247,8 @@ namespace Scripts.Networking
             }
 
         }
+
+        // Let the otehr client know that they have been attacked.
         private void Net_ATTACK(int connId, int channelId, int recHostId, Net_ATTACK msg)
         {
             Debug.Log($"Attack {msg.TroopID} with {msg.DamageTaken} damage");
@@ -238,6 +266,7 @@ namespace Scripts.Networking
             }
         }
 
+        // when a client finishs thier army build, change the scene
         private void Net_FinishBuild(int connId, int channelId, int recHostId, Net_FinishBuild msg)
         {
             // Add magic amount to DB
@@ -260,6 +289,7 @@ namespace Scripts.Networking
             }
         }
 
+        // move a troop on both clients screens
         private void Net_MOVE(int connId, int channelId, int recHostId, Net_MOVE msg)
         {
             Debug.Log($"Moved {msg.TroopID} to <{msg.NewX},{msg.NewZ}");
@@ -277,6 +307,7 @@ namespace Scripts.Networking
             }
         }
 
+        // Add a troop to the database
         private void Net_AddTroop(int connId, int channelId, int recHostId, Net_AddTroop msg)
         {
             dbCont.OpenDB();
@@ -434,7 +465,6 @@ namespace Scripts.Networking
         /// <summary>
         /// These are test functions that are mapped to buttons in the server scene.
         /// </summary>
-
         public void RestartServer()
         {
             waitingConnections = 2;

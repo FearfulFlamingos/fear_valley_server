@@ -24,6 +24,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Fear Valley Server
    &#160;<span id="projectnumber">0.8</span>
@@ -85,20 +86,31 @@ $(document).ready(function(){initNavTree('class_scripts_1_1_networking_1_1_serve
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#properties">Properties</a> &#124;
 <a href="class_scripts_1_1_networking_1_1_server-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Scripts.Networking.Server Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The server runs constantly during the game and checks every frame for new network events from clients.  
+ <a href="class_scripts_1_1_networking_1_1_server.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac8540fb6211e733e903f0dce4cd5727b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scripts_1_1_networking_1_1_server.html#ac8540fb6211e733e903f0dce4cd5727b">Init</a> ()</td></tr>
+<tr class="memdesc:ac8540fb6211e733e903f0dce4cd5727b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the server.  <a href="class_scripts_1_1_networking_1_1_server.html#ac8540fb6211e733e903f0dce4cd5727b">More...</a><br /></td></tr>
 <tr class="separator:ac8540fb6211e733e903f0dce4cd5727b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32272e8ff5fa1360e2aaedaf2ad7edeb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scripts_1_1_networking_1_1_server.html#a32272e8ff5fa1360e2aaedaf2ad7edeb">Shutdown</a> ()</td></tr>
+<tr class="memdesc:a32272e8ff5fa1360e2aaedaf2ad7edeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shut the server down.  <a href="class_scripts_1_1_networking_1_1_server.html#a32272e8ff5fa1360e2aaedaf2ad7edeb">More...</a><br /></td></tr>
 <tr class="separator:a32272e8ff5fa1360e2aaedaf2ad7edeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a915666cb93335f8b281bcb86246aea43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scripts_1_1_networking_1_1_server.html#a915666cb93335f8b281bcb86246aea43">UpdateMessagePump</a> ()</td></tr>
+<tr class="memdesc:a915666cb93335f8b281bcb86246aea43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for new network events.  <a href="class_scripts_1_1_networking_1_1_server.html#a915666cb93335f8b281bcb86246aea43">More...</a><br /></td></tr>
 <tr class="separator:a915666cb93335f8b281bcb86246aea43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b93108a646217af33ccb0a57227aba4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scripts_1_1_networking_1_1_server.html#a4b93108a646217af33ccb0a57227aba4">CheckMessageType</a> (int recHostId, int connectionId, int channelId, byte[] recievedBuffer, NetworkEventType type)</td></tr>
+<tr class="memdesc:a4b93108a646217af33ccb0a57227aba4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks the network event type of the incoming net message and acts appropriately.  <a href="class_scripts_1_1_networking_1_1_server.html#a4b93108a646217af33ccb0a57227aba4">More...</a><br /></td></tr>
+<tr class="separator:a4b93108a646217af33ccb0a57227aba4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c9673f7d895748c7e763c3fecd65aff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scripts_1_1_networking_1_1_server.html#a6c9673f7d895748c7e763c3fecd65aff">SendToClient</a> (int recHost, int connId, NetMsg msg)</td></tr>
 <tr class="memdesc:a6c9673f7d895748c7e763c3fecd65aff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the client over the network.  <a href="class_scripts_1_1_networking_1_1_server.html#a6c9673f7d895748c7e763c3fecd65aff">More...</a><br /></td></tr>
 <tr class="separator:a6c9673f7d895748c7e763c3fecd65aff"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -114,8 +126,36 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab43e346410200e3c9cfb95ea3636264a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scripts_1_1_networking_1_1_server.html#ab43e346410200e3c9cfb95ea3636264a">RestartServer</a> ()</td></tr>
 <tr class="memdesc:ab43e346410200e3c9cfb95ea3636264a"><td class="mdescLeft">&#160;</td><td class="mdescRight">These are test functions that are mapped to buttons in the server scene.  <a href="class_scripts_1_1_networking_1_1_server.html#ab43e346410200e3c9cfb95ea3636264a">More...</a><br /></td></tr>
 <tr class="separator:ab43e346410200e3c9cfb95ea3636264a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a63aabd4970e0c9232942cc176a8a8969"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scripts_1_1_networking_1_1_server.html#a63aabd4970e0c9232942cc176a8a8969">error</a></td></tr>
+<tr class="separator:a63aabd4970e0c9232942cc176a8a8969"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cfee6ec790ca82fc5a33a72bf65c803"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scripts_1_1_networking_1_1_server.html#a4cfee6ec790ca82fc5a33a72bf65c803">waitingConnections</a> = 2</td></tr>
+<tr class="separator:a4cfee6ec790ca82fc5a33a72bf65c803"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82dc81359476334b59442243a6c8e8e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interface_scripts_1_1_d_b_m_s_1_1_i_database_controller.html">IDatabaseController</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scripts_1_1_networking_1_1_server.html#a82dc81359476334b59442243a6c8e8e9">dbCont</a></td></tr>
+<tr class="separator:a82dc81359476334b59442243a6c8e8e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Properties</h2></td></tr>
+<tr class="memitem:aaa2aaed6420bfe355692e5a4af90a9c1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scripts_1_1_networking_1_1_server.html#aaa2aaed6420bfe355692e5a4af90a9c1">IsStarted</a><code> [get, set]</code></td></tr>
+<tr class="separator:aaa2aaed6420bfe355692e5a4af90a9c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8401c9063048dbbb083a07c86464455"><td class="memItemLeft" align="right" valign="top">NetworkEventType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scripts_1_1_networking_1_1_server.html#ac8401c9063048dbbb083a07c86464455">LastEvent</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ac8401c9063048dbbb083a07c86464455"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used for testing.  <a href="class_scripts_1_1_networking_1_1_server.html#ac8401c9063048dbbb083a07c86464455">More...</a><br /></td></tr>
+<tr class="separator:ac8401c9063048dbbb083a07c86464455"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a4e7f53880dba4e6e7aadbb15b2f835"><td class="memItemLeft" align="right" valign="top">NetMsg&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scripts_1_1_networking_1_1_server.html#a6a4e7f53880dba4e6e7aadbb15b2f835">LastRecieved</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a6a4e7f53880dba4e6e7aadbb15b2f835"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used for testing.  <a href="class_scripts_1_1_networking_1_1_server.html#a6a4e7f53880dba4e6e7aadbb15b2f835">More...</a><br /></td></tr>
+<tr class="separator:a6a4e7f53880dba4e6e7aadbb15b2f835"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad34deda55b4aae54252255dc2e25c785"><td class="memItemLeft" align="right" valign="top">NetMsg&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scripts_1_1_networking_1_1_server.html#ad34deda55b4aae54252255dc2e25c785">LastSentToClient</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ad34deda55b4aae54252255dc2e25c785"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used for testing.  <a href="class_scripts_1_1_networking_1_1_server.html#ad34deda55b4aae54252255dc2e25c785">More...</a><br /></td></tr>
+<tr class="separator:ad34deda55b4aae54252255dc2e25c785"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ea3cb67c3fc6f3973e0e89f9dac7b03"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scripts_1_1_networking_1_1_server.html#a3ea3cb67c3fc6f3973e0e89f9dac7b03">LastClient</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a3ea3cb67c3fc6f3973e0e89f9dac7b03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used for testing.  <a href="class_scripts_1_1_networking_1_1_server.html#a3ea3cb67c3fc6f3973e0e89f9dac7b03">More...</a><br /></td></tr>
+<tr class="separator:a3ea3cb67c3fc6f3973e0e89f9dac7b03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The server runs constantly during the game and checks every frame for new network events from clients. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a1cf8a03d7465145a49082186e85415d4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1cf8a03d7465145a49082186e85415d4">&#9670;&nbsp;</a></span>ChangeScene()</h2>
 
@@ -152,6 +192,65 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a4b93108a646217af33ccb0a57227aba4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b93108a646217af33ccb0a57227aba4">&#9670;&nbsp;</a></span>CheckMessageType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Scripts.Networking.Server.CheckMessageType </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>recHostId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>connectionId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channelId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte[]&#160;</td>
+          <td class="paramname"><em>recievedBuffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">NetworkEventType&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks the network event type of the incoming net message and acts appropriately. </p>
+<p>Public due to testing, could easily have been a part of <a class="el" href="class_scripts_1_1_networking_1_1_server.html#a915666cb93335f8b281bcb86246aea43" title="Check for new network events.">UpdateMessagePump</a> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">recHostId</td><td>Which client is it coming from</td></tr>
+    <tr><td class="paramname">connectionId</td><td>Which connection is being used.</td></tr>
+    <tr><td class="paramname">channelId</td><td>Which channel is being used.</td></tr>
+    <tr><td class="paramname">recievedBuffer</td><td>Data sent with message (if applicable).</td></tr>
+    <tr><td class="paramname">type</td><td>Type of network event.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ac8540fb6211e733e903f0dce4cd5727b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac8540fb6211e733e903f0dce4cd5727b">&#9670;&nbsp;</a></span>Init()</h2>
 
@@ -166,6 +265,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Start the server. </p>
 
 </div>
 </div>
@@ -266,6 +367,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Shut the server down. </p>
+
 </div>
 </div>
 <a id="a4b018bf4d8e048b78b43136f8dac264b"></a>
@@ -303,10 +406,174 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Check for new network events. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a82dc81359476334b59442243a6c8e8e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82dc81359476334b59442243a6c8e8e9">&#9670;&nbsp;</a></span>dbCont</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="interface_scripts_1_1_d_b_m_s_1_1_i_database_controller.html">IDatabaseController</a> Scripts.Networking.Server.dbCont</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a63aabd4970e0c9232942cc176a8a8969"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63aabd4970e0c9232942cc176a8a8969">&#9670;&nbsp;</a></span>error</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">byte Scripts.Networking.Server.error</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4cfee6ec790ca82fc5a33a72bf65c803"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cfee6ec790ca82fc5a33a72bf65c803">&#9670;&nbsp;</a></span>waitingConnections</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Scripts.Networking.Server.waitingConnections = 2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a id="aaa2aaed6420bfe355692e5a4af90a9c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa2aaed6420bfe355692e5a4af90a9c1">&#9670;&nbsp;</a></span>IsStarted</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Scripts.Networking.Server.IsStarted</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3ea3cb67c3fc6f3973e0e89f9dac7b03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ea3cb67c3fc6f3973e0e89f9dac7b03">&#9670;&nbsp;</a></span>LastClient</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Scripts.Networking.Server.LastClient</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Used for testing. </p>
+
+</div>
+</div>
+<a id="ac8401c9063048dbbb083a07c86464455"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8401c9063048dbbb083a07c86464455">&#9670;&nbsp;</a></span>LastEvent</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">NetworkEventType Scripts.Networking.Server.LastEvent</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Used for testing. </p>
+
+</div>
+</div>
+<a id="a6a4e7f53880dba4e6e7aadbb15b2f835"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a4e7f53880dba4e6e7aadbb15b2f835">&#9670;&nbsp;</a></span>LastRecieved</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">NetMsg Scripts.Networking.Server.LastRecieved</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Used for testing. </p>
+
+</div>
+</div>
+<a id="ad34deda55b4aae54252255dc2e25c785"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad34deda55b4aae54252255dc2e25c785">&#9670;&nbsp;</a></span>LastSentToClient</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">NetMsg Scripts.Networking.Server.LastSentToClient</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Used for testing. </p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/Gavin Lochtefeld/Documents/GitHub/fear_valley_server/fear_server/Assets/Scripts/Networking/<a class="el" href="_server_8cs.html">Server.cs</a></li>
+<li>fear_server/Assets/Scripts/Networking/<a class="el" href="_server_8cs.html">Server.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -314,7 +581,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_scripts.html">Scripts</a></li><li class="navelem"><a class="el" href="namespace_scripts_1_1_networking.html">Networking</a></li><li class="navelem"><a class="el" href="class_scripts_1_1_networking_1_1_server.html">Server</a></li>
-    <li class="footer">Generated on Sun Apr 12 2020 14:08:14 for Fear Valley Server by
+    <li class="footer">Generated on Tue May 5 2020 21:20:58 for Fear Valley Server by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

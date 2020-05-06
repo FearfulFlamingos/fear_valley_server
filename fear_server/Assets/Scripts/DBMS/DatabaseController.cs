@@ -2,22 +2,10 @@
 using UnityEngine;
 using System.Data;
 using Mono.Data.Sqlite;
-using System;
 
 namespace Scripts.DBMS
 {
-    /// <summary>
-    /// The Database controller is the main way to access the single database we created.
-    /// It is easily extensible, with method definitions for three out of the four main operations:
-    /// <para><see cref="Create(string)"/></para>
-    /// <para><see cref="DatabaseController.Read(string)"/></para>
-    /// <para><see cref="Update(string)"/></para>
-    /// <para>Delete is covered by update, as they are functionally identical.</para>
-    /// </summary>
-    /// <remarks>
-    /// More complex queries exist as methods. These are purpose built for the code that requires them,
-    /// since all database interactions are kept in the same file.
-    /// </remarks>
+    /// <inheritdoc cref="IDatabaseController"/>
     public class DatabaseController : IDatabaseController
     {
         private readonly string dbpath = "URI=file:" + Application.persistentDataPath + "/fearful_data.sqlite";
@@ -41,6 +29,7 @@ namespace Scripts.DBMS
             OpenDB();
         }
 
+        // Creates a new database if a file isn't found in persistent storage.
         private void CreateDatabase()
         {
             SqliteConnection.CreateFile(Application.persistentDataPath + "/fearful_data.sqlite");
@@ -106,20 +95,14 @@ namespace Scripts.DBMS
             CloseDB();
         }
 
-        /// <summary>
-        /// Opens the Database connection.
-        /// </summary>
+        /// <inheritdoc cref="IDatabaseController.OpenDB"/>
         public void OpenDB()
         {
             dbcon.Open();
         }
 
         #region Basic Commands
-        /// <summary>
-        /// runs CREATE command. Used for "CREATE TABLE", etc.
-        /// </summary>
-        /// <param name="sql">Query to be executed.</param>
-        /// <returns>IDataReader object with read() method to iterate through.</returns>
+        /// <inheritdoc cref="IDatabaseController.Create(string)"/>
         public IDataReader Create(string sql)
         {
             IDbCommand dbcmd = dbcon.CreateCommand();
@@ -127,11 +110,11 @@ namespace Scripts.DBMS
             return dbcmd.ExecuteReader();
 
         }
-        /// <summary>
-        /// Internal function to build more complicated, repeated queries.
-        /// </summary>
-        /// <param name="sql">Query to be executed.</param>
-        /// <returns>IDataReader object with read() method.</returns>
+        // <summary>
+        // Internal function to build more complicated, repeated queries.
+        // </summary>
+        // <param name="sql">Query to be executed.</param>
+        // <returns>IDataReader object with read() method.</returns>
         private IDataReader Read(string sql)
         {
             IDbCommand dbcmd = dbcon.CreateCommand();
@@ -139,10 +122,7 @@ namespace Scripts.DBMS
             return dbcmd.ExecuteReader();
         }
 
-        /// <summary>
-        /// Runs an UPDATE query. Use for DELETE and UPDATE.
-        /// </summary>
-        /// <param name="sql">Query to be executed.</param>
+        /// <inheritdoc cref="IDatabaseController.Update(string)"/>
         public void Update(string sql)
         {
             IDbCommand cmd = dbcon.CreateCommand();
@@ -150,9 +130,7 @@ namespace Scripts.DBMS
             cmd.ExecuteNonQuery();
         }
 
-        /// <summary>
-        /// Closes the database connection. 
-        /// </summary>
+        /// <inheritdoc cref="IDatabaseController.CloseDB"/>
         public void CloseDB()
         {
             dbcon.Dispose();
@@ -162,26 +140,14 @@ namespace Scripts.DBMS
 
         #region Complex Queries
 
+        /// <inheritdoc cref="IDatabaseController.ClearPreviousGameData"/>
         public void ClearPreviousGameData()
         {
             Update("DELETE FROM Army;");
             Update("DELETE FROM Magic;");
         }
 
-        /// <summary>
-        /// Adds a troop to the database. Assumes the client has enough money.
-        /// </summary>
-        /// <remarks>
-        /// The important thing to notice here is that all characters have a unique ID. That means that the client needs to check
-        /// both dictionaries for the TroopID when deleting.
-        /// </remarks>
-        /// <param name="teamNum">Player connection id</param>
-        /// <param name="troop">Class.</param>
-        /// <param name="weapon">Name of weapon.</param>
-        /// <param name="armor">Name of armor.</param>
-        /// <param name="posX">Relative X position on board.</param>
-        /// <param name="posZ">Relative Z position on board.</param>
-        /// <param name="isLeader">Leader (default false).</param>
+        /// <inheritdoc cref="IDatabaseController.AddTroopToDB(int, string, string, string, float, float, bool)"/>
         public void AddTroopToDB(int teamNum, string troop, string weapon, string armor, float posX, float posZ, bool isLeader = false)
         {
             Update("INSERT INTO Army " +
@@ -195,10 +161,8 @@ namespace Scripts.DBMS
                 $"{posX}," +
                 $"{posZ});");
         }
-        /// <summary>
-        /// Queries the DB and pulls all relevant info from tables.
-        /// </summary>
-        /// <returns>List of Troop objects for easy use.</returns>
+
+        /// <inheritdoc cref="IDatabaseController.GetAllTroops"/>
         public List<Troop> GetAllTroops()
         {
             List<Troop> allTroops = new List<Troop>();
@@ -238,11 +202,7 @@ namespace Scripts.DBMS
             return allTroops;
         }
 
-        /// <summary>
-        /// Adds the team Magic budget into the database. This should only be called once, ideally after the "Finish Build" button is clicked.
-        /// </summary>
-        /// <param name="team">Connection number to associate this with.</param>
-        /// <param name="value">Amount of magic charges that the team purchased.</param>
+        /// <inheritdoc cref="IDatabaseController.AddMagicToDB(int, int)"/>
         public void AddMagicToDB(int team, int value)
         {
             Update("INSERT INTO Magic " +
@@ -251,10 +211,7 @@ namespace Scripts.DBMS
                 $"{value});");
         }
 
-        /// <summary>
-        /// Reads the Magic table in its entirety and returns it as a dictionary.
-        /// </summary>
-        /// <returns>Dictionary object of ConnectionID to Magic Charge amount.</returns>
+        /// <inheritdoc cref="IDatabaseController.GetMagic"/>
         public Dictionary<int, int> GetMagic()
         {
             Dictionary<int, int> magic = new Dictionary<int, int>();

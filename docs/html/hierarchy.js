@@ -1,6 +1,8 @@
 var hierarchy =
 [
-    [ "Scripts.DBMS.DatabaseController", "class_scripts_1_1_d_b_m_s_1_1_database_controller.html", null ],
+    [ "Scripts.DBMS.IDatabaseController", "interface_scripts_1_1_d_b_m_s_1_1_i_database_controller.html", [
+      [ "Scripts.DBMS.DatabaseController", "class_scripts_1_1_d_b_m_s_1_1_database_controller.html", null ]
+    ] ],
     [ "MonoBehaviour", null, [
       [ "Scripts.Networking.MonoServer", "class_scripts_1_1_networking_1_1_mono_server.html", null ]
     ] ],

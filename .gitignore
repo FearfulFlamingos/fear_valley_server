@@ -63,3 +63,6 @@ crashlytics-build.properties
 # Databases
 *.sqlite
 *.sqlite.meta
+
+# Doxygen LaTeX
+docs/latex/
