@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['xpos_53',['XPos',['../class_scripts_1_1_d_b_m_s_1_1_troop.html#ae5f4a03165aca94a8f01f86c0c8a1a23',1,'Scripts::DBMS::Troop']]]
+  ['waitingconnections_52',['waitingConnections',['../class_scripts_1_1_networking_1_1_server.html#a4cfee6ec790ca82fc5a33a72bf65c803',1,'Scripts::Networking::Server']]],
+  ['weapondamage_53',['WeaponDamage',['../class_scripts_1_1_d_b_m_s_1_1_troop.html#aee4fb7bf20c50560c398663002d65760',1,'Scripts::DBMS::Troop']]],
+  ['weaponrange_54',['WeaponRange',['../class_scripts_1_1_d_b_m_s_1_1_troop.html#af48f2534bb41b9c472b998d740bc3530',1,'Scripts::DBMS::Troop']]]
 ];

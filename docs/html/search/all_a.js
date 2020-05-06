@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['propogatetroops_30',['PropogateTroops',['../class_scripts_1_1_networking_1_1_server.html#a7c5371c841d70336b213a9506586ae6d',1,'Scripts::Networking::Server']]]
+  ['opendb_31',['OpenDB',['../class_scripts_1_1_d_b_m_s_1_1_database_controller.html#a1c0f165381782e98a927e88f3a7618d5',1,'Scripts.DBMS.DatabaseController.OpenDB()'],['../interface_scripts_1_1_d_b_m_s_1_1_i_database_controller.html#a16cc69eb85ace2af3931370ea9420174',1,'Scripts.DBMS.IDatabaseController.OpenDB()']]]
 ];

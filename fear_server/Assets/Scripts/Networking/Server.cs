@@ -366,6 +366,7 @@ namespace Scripts.Networking
         /// Changes the scene on the client.
         /// </summary>
         /// <param name="scene">Name of the scene to switch to.</param>
+        /// <param name="whichConn">Which connection to send the scene to.</param>
         public void ChangeScene(string scene, int whichConn)
         {
             Net_ChangeScene cs = new Net_ChangeScene();
